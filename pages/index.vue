@@ -15,6 +15,13 @@
           Documentation
         </a>
         <a
+          href="home"
+          rel="noopener noreferrer"
+          class="button--grey"
+        >
+          Home
+        </a>
+        <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
           rel="noopener noreferrer"

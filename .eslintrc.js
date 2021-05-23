@@ -14,5 +14,8 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'vue/html-indent': 0,
+    'space-before-function-paren': 0
+  }
 }
