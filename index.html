@@ -1,0 +1,129 @@
+<html>
+    <head>
+        Farewell
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </head>
+    <body>
+<script>
+    var list = [
+        {
+            id:1,
+        },
+        {
+            id:2,
+        },
+        {
+            id:3,
+        },
+        {
+            id:4,
+        },
+        {
+            id:5,
+        },
+        {
+            id:6,
+        },
+        {
+            id:7,
+        },
+        {
+            id:8,
+        },
+        {
+            id:9,
+        },
+        {
+            id:10,
+        },
+    ];
+</script>
+
+        <div id="mainContainer">
+            <div class="paper">
+                <div class="paper-content">
+                    <p>Hello world !&#10;Here's a paper textarea tag.</p>
+                </div>
+            </div>
+
+            <script>
+                list.forEach(function(element){
+                    var paper = document.createElement("div");
+                    paper.classList = ["paper"];
+                    var content = document.createElement('div') ;
+                    content.classList = ['paper-content'];
+                    var text = document.createElement('p');
+                    text.innerHTML = element.id ;
+                    
+                    content.appendChild(text) ;
+                    paper.appendChild(content) ;
+
+                    var element = document.getElementById("mainContainer");
+                    element.appendChild(paper);
+                }) ;
+            </script>
+         </div>
+    </body>
+</html>
+
+<script>
+var circles = document.querySelectorAll(".paper");
+var n = circles.length ;
+
+console.log("Here 1")
+
+
+const j = 100 ;
+
+
+for (var i = 0; i < n; i++) {
+    var circle = circles[i];
+    animateCircles(circle);
+}
+
+console.log("Here 2")
+
+
+  
+function animateCircles(circle) {
+    setTimeout(function(){
+    var xMax = 1900;
+    var yMax = 1000;
+  
+    var maxDeg = 70 ;
+
+    var degZ = 0.8 ;
+    var degY = 1 ;
+
+
+    circle.animProps = {
+        duration: 3000 + Math.random() * 9000,
+        easing: "ease-out",
+    }
+  
+    var animationPlayer = circle.animate(
+        [
+            {
+                opacity: 0.5,
+                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,-1," + -degZ*Math.random() + "," + Math.random()*maxDeg + "deg)" 
+            }, {
+                opacity: 1,
+                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0deg)" 
+            }, {
+                opacity: 0.5,
+                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,1," + degZ*Math.random() + "," + Math.random()*maxDeg + "deg)" 
+            }, {
+                opacity: 1,
+                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0deg)" 
+            }, {
+                opacity: 0.5,
+                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,-1," + -degZ*Math.random() + "," + Math.random()*maxDeg + "deg)" 
+            }
+        ], 
+        circle.animProps
+        );
+        animateCircles(circle)
+    },5000)
+ }
+</script>
