@@ -74,8 +74,6 @@ var n = circles.length ;
 console.log("Here 1")
 
 
-const j = 100 ;
-
 
 for (var i = 0; i < n; i++) {
     var circle = circles[i];
@@ -88,8 +86,8 @@ console.log("Here 2")
   
 function animateCircles(circle) {
     setTimeout(function(){
-    var xMax = 1900;
-    var yMax = 1000;
+    var xMax = screen.width;
+    var yMax = screen.height;
   
     var maxDeg = 70 ;
 
