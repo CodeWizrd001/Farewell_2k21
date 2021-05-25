@@ -33,6 +33,12 @@ const server = http.createServer((req, res) => {
             res.write(data)
             res.end()
         }
+        else if (fname.endsWith('.js'))
+        {
+            res.writeHead(200,{'content-type':'text/javascript'})
+            res.write(data)
+            res.end()
+        }
         else
         {
             res.writeHead(200,{'content-type':'text/html'})
