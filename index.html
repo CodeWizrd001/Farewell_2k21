@@ -238,8 +238,8 @@ function show(pid) {
         var $container = $( '#uc-container' ),
             pfold = $( '#uc-container' ).pfold({
                 easing : 'ease-in-out',
-                folds : 3,
-                folddirection : ['left','bottom','right'],
+                folds : screen.width > screen.height ? 3 : 2 ,
+                folddirection : screen.width > screen.height ? ['left','bottom','right'] : ['left','bottom'],
         });
         console.log("Inside Function") ;
         $container.find( 'span.clickme' ).on('click',function() {
