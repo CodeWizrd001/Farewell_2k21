@@ -35,6 +35,20 @@ body {
     overflow: hidden;
     opacity: 0;
 }
+
+.paper-main {
+    position: relative;
+    width: 90%;
+    max-width: 200px;
+    min-width: 80px;
+    height: 120px;
+    margin: 0 auto;
+    background: #fafafa;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    overflow: hidden;
+}
+
 .paper:before {
     content: '';
     position: absolute;

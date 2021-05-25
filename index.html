@@ -1,6 +1,5 @@
 <html>
     <head>
-        Farewell
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     </head>
@@ -41,7 +40,7 @@
 </script>
 
         <div id="mainContainer">
-            <div class="paper">
+            <div class="paper" onclick="show(100)">
                 <div class="paper-content">
                     <p>Hello world !&#10;Here's a paper textarea tag.</p>
                 </div>
@@ -58,6 +57,9 @@
                     
                     content.appendChild(text) ;
                     paper.appendChild(content) ;
+                    
+                    paper.setAttribute('onclick','show('+element.id+')')
+                    paper.setAttribute('id','paper-'+element.id)
 
                     var element = document.getElementById("mainContainer");
                     element.appendChild(paper);
@@ -68,23 +70,42 @@
 </html>
 
 <script>
-var circles = document.querySelectorAll(".paper");
-var n = circles.length ;
-
-console.log("Here 1")
-
-
+var papers = document.querySelectorAll(".paper");
+var n = papers.length ;
+var animations = {};
 
 for (var i = 0; i < n; i++) {
-    var circle = circles[i];
-    animateCircles(circle);
+    var circle = papers[i];
+    animations[i] = 0 ;
+    animatepapers(circle,i);
 }
 
-console.log("Here 2")
 
+function show(pid) {
+    console.log("Button Clicked Show "+pid) ;
+    newPaper = document.getElementById('paper-'+pid).cloneNode(true) ;
+    newPaper.classList.remove('paper') ;
+    newPaper.classList.add('paper-main') ;
+    newPaper.setAttribute('id',pid) ;
 
+    newPaper.removeAttribute('onclick') ;
+
+    closeButton = document.createElement('button') ;
+    closeButton.innerHTML = 'X' ;
+    closeButton.setAttribute('onclick',"hide("+pid+")") ;
+    newPaper.appendChild(closeButton) ;
+
+    mainContainer = document.getElementById('mainContainer') ;
+    mainContainer.appendChild(newPaper) ;
+}
+
+function hide(pid) {
+    console.log("Button Clicked Hide "+pid) ;
+    paper = document.getElementById(pid) ;
+    paper.remove() ;
+}
   
-function animateCircles(circle) {
+function animatepapers(circle,i) {
     setTimeout(function(){
     var xMax = screen.width;
     var yMax = screen.height;
@@ -93,7 +114,6 @@ function animateCircles(circle) {
 
     var degZ = 0.8 ;
     var degY = 1 ;
-
 
     circle.animProps = {
         duration: 3000 + Math.random() * 9000,
@@ -107,13 +127,13 @@ function animateCircles(circle) {
                 transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,-1," + -degZ*Math.random() + "," + Math.random()*maxDeg + "deg)" 
             }, {
                 opacity: 1,
-                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0deg)" 
+                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,0,0,0)" 
             }, {
                 opacity: 0.5,
                 transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,1," + degZ*Math.random() + "," + Math.random()*maxDeg + "deg)" 
             }, {
                 opacity: 1,
-                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0deg)" 
+                transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,0,0,0)" 
             }, {
                 opacity: 0.5,
                 transform: "translate3d(" + (Math.random() * xMax) + "px, " + (Math.random() * yMax) + "px, 0px) rotate3d(0,-1," + -degZ*Math.random() + "," + Math.random()*maxDeg + "deg)" 
@@ -121,7 +141,8 @@ function animateCircles(circle) {
         ], 
         circle.animProps
         );
-        animateCircles(circle)
+        animations[i] = animationPlayer ;
+        animatepapers(circle,i)
     },5000)
  }
 </script>
