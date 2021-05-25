@@ -2,12 +2,11 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>PFold: Paper-Like Unfolding Effect</title>
-        <meta name="description" content="PFold: Paper-Like Unfolding Effect" />
+        <title>Farewell</title>
+        <meta name="description" content="Farewell" />
         <meta name="keywords" content="css3, experiment, 3d, unfolding, fold, paper, component, element, web design, jquery, plugin, perspective" />
         <meta name="author" content="Codrops" />
         <link rel="shortcut icon" href="../favicon.ico"> 
@@ -235,25 +234,20 @@ function show(pid) {
     mainContainer.appendChild(newPaper) ;
     lock = true ;
 
-    $(function() {
-
-    var $container = $( '#uc-container' ),
-        pfold = $( '#uc-container' ).pfold({
-            easing : 'ease-in-out',
-            folds : 3,
-            folddirection : ['left','bottom','right'],
+    //$(function() {
+        var $container = $( '#uc-container' ),
+            pfold = $( '#uc-container' ).pfold({
+                easing : 'ease-in-out',
+                folds : 3,
+                folddirection : ['left','bottom','right'],
         });
-
-    $container.find( 'span.clickme' ).on( 'click', function() {
-
-        pfold.unfold();
-
-    } ).end().find( 'span.close' ).on( 'click', function() {
-
-        pfold.fold();
-
-    } );
-    });
+        console.log("Inside Function") ;
+        $container.find( 'span.clickme' ).on('click',function() {
+            pfold.unfold();
+        }).end().find( 'span.close' ).on('click',function() {
+            pfold.fold();
+        });
+    //});
 }
 
 function hide() {
