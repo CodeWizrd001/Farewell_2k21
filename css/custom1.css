@@ -40,19 +40,19 @@
 
 .demo-1 .scrollwrap h3 {
     font-weight: normal;
-    font-size: 22px;
+    font-size: 4vmin;
     padding: 30px 0 10px 30px;
     pointer-events: none;
 }
 
 .demo-1 .scrollwrap p {
-    font-size: 18px;
+    font-size: 3vmin;
     padding: 0 40px 0 40px;
     pointer-events: none;
 }
 
 .demo-1 .scrollwrap p.signature {
-    font-size: 20px;
+    font-size: 3vmin;
     padding: 10px 30px 0 30px;
     text-align: right;
     pointer-events: none;
