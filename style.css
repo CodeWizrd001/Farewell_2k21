@@ -6,6 +6,10 @@ height: 100%;
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Handlee);
 
+.list {
+    position: absolute;
+}
+
 .paper {
     position: absolute;
     width: 90%;

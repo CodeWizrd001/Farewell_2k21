@@ -6,11 +6,16 @@
   "scripts": {
     "start": "node app.js",
     "test": "nodemon app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "scss": "node-sass --watch scss -o css" 
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "_id": "tempfarewell@1.0.0",
+  "dependencies": {
+    "node-sass": "^6.0.0"
   }
 }
