@@ -11,7 +11,11 @@
 .demo-1 .uc-initial-content,
 .demo-1 .uc-back,
 .demo-1 .uc-front {
-	background: #fff url(../images/paper.jpg) repeat center center;
+    background: #fff url(../images/paper.jpg) repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .demo-1 span.clickme {

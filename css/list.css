@@ -10,7 +10,7 @@
     height: 25vmin;
     width: 50vmin;
     transform: translateX(10px) rotateY(25deg) rotateX(10deg);
-    background: rgba(249, 198, 26, 0.88);
+    background: rgba(249, 198, 26, 0.85);
     justify-content: flex-start;
     align-items: center;
     padding: 20px;

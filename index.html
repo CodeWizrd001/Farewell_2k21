@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
 		<!--[if lte IE 8]><style>.support-note .note-ie{display:block;}</style><![endif]-->
 		<style>
-			body { background: url(images/bg.jpg); }
+			body { background: url(images/dark_bg.jpg); }
 			.container > header h1 {
 			    color: #fff;
 			    text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
@@ -89,21 +89,6 @@ function show(pid) {
     }
     message = list[pid] ;
 
-		/*		
-        <div id="uc-container" class="uc-container">
-            <div class="uc-initial-content">
-                <span class="clickme">Click me</span>
-            </div>
-            <div class="uc-final-content">
-                <div class="scrollwrap">
-                    <h3>Dear Allen,</h3>
-                    <p>I just wanted to let you know that you left the garage door open and all the monkeys could get away! Great job! How often did I tell you <span>NOT</span> to forget to close it. On top of all that you also left the gate open and now they are literally in the wild! Anyway, just wated to say <span>THANKS</span> for that!</p><p class="signature">Yours, Barbara</p>
-                </div>
-                <span class="close">x</span>
-            </div>
-        </div>
-        */
-
     newPaper = document.createElement('div') ;
     newPaper.classList.add('uc-container') ;
     newPaper.setAttribute('id','uc-container') ;
@@ -141,18 +126,6 @@ function show(pid) {
 
     newPaper.appendChild(clickMe) ;
     newPaper.appendChild(content) ;
-    
-    /*newPaper = document.getElementById('paper-'+pid).cloneNode(true) ;
-    newPaper.classList.remove('paper') ;
-    newPaper.classList.add('paper-main') ;
-    newPaper.setAttribute('id',pid) ;
-
-    newPaper.removeAttribute('onclick') ;
-
-    closeButton = document.createElement('button') ;
-    closeButton.innerHTML = 'X' ;
-    closeButton.setAttribute('onclick',"hide("+pid+")") ;
-    newPaper.appendChild(closeButton) ;*/
 
     mainContainer = document.getElementById('main-bg') ;
     mainContainer.appendChild(newPaper) ;
