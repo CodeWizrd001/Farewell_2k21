@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/list.css" />
     </head>
-    <body>
+    <body id='body'>
         <div class="stars">
             <div class="star"></div>
             <div class="star"></div>
@@ -61,15 +61,56 @@
 
         </div>
 
-        <script type="text/javascript" src="js/common.js"></script>
-
-        <div class="wrapper">
-            <div class="card">
-                <h1>
-                    <span class="enclosed">Cut</span>out
-                </h1>
-            </div>
+        <div id='listContainer'>
+            <div class="gap"></div>
         </div>
+
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript">
+            var side = false ;
+
+            body = document.getElementById('listContainer') ;
+            // body = document.body ;
+            list.forEach(element => {
+                side = !side ;
+                newCard = document.createElement('div') ;
+                newCard.classList.add('wrapper') ;
+                if(side) 
+                    newCard.classList.add('leftCard') ;
+                else 
+                    newCard.classList.add('rightCard') ;
+
+                card = document.createElement('div') ;
+                card.classList.add('card') ;
+
+                title = document.createElement('h1') ;
+                title.classList.add('title') ;
+
+                enclosed = document.createElement('span') ;
+                enclosed.classList.add('enclosed') ;
+                enclosed.innerHTML = element.title ;
+
+                title.appendChild(enclosed) ;
+
+                content = document.createElement('p') ;
+                content.classList.add('content') ;
+                content.innerHTML = element.text ;
+
+                sign = document.createElement('p') ;
+                sign.classList.add('sign') ;
+                sign.innerHTML = '- ' + element.sign ;
+
+                card.appendChild(title) ;
+                card.appendChild(content) ;
+                card.appendChild(sign) ;
+                newCard.appendChild(card) ;
+
+                breakSpace = document.createElement('div') ;
+                breakSpace.classList.add('gap') ;
+                body.appendChild(newCard) ;
+                body.appendChild(breakSpace) ;
+            });
+        </script>
 
         <a href = "/">
             <button>Go Back</button>

@@ -7,24 +7,21 @@
   
   .card {
     grid-area: 1 / 1;
-    height: 200px;
-    width: 400px;
+    height: 25vmin;
+    width: 50vmin;
     transform: translateX(10px) rotateY(25deg) rotateX(10deg);
     background: rgba(249, 198, 26, 0.88);
-    display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
     color: #000;
     text-transform: uppercase;
-    font-size: 30px;
     font-weight: 900;
     backface-visibility: hidden;
     box-shadow: 0 10px 30px -3px rgba(0,0,0,.1);
   }
   
   h1 {
-    font-size: 60px;
     font-weight: 900;
   }
   
@@ -72,4 +69,41 @@
   html,
   body {
     height: 100%;
+  }
+
+  #listContainer {
+    display: 'contents' ;
+  }
+
+ #titleDiv {
+   max-width: 30%;
+ }
+
+ #contentDiv {
+   width: 70%;
+   display: block;
+ }
+
+  h1.title {
+    font-size: 4vmin;
+    position:absolute ;
+    left:1% ;
+    top:1% ;
+  }
+
+  p.content {
+    font-size: 2.5vmin;
+    pointer-events: none;
+    position:absolute ;
+    left:4% ;
+    top:20% ;
+  }
+
+  p.sign {
+    font-size: 2vmin;
+    text-align: right;
+    pointer-events: none;
+    position:absolute ;
+    bottom:2% ;
+    right:5% ;
   }
