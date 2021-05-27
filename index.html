@@ -54,15 +54,17 @@
         </script>
     </div>
         
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.pfold.js"></script>
+    <script type="text/javascript" src="js/pauseresume.js"></script>
+
     <section class="main demo-1" id='main-bg'>
     </section>
 
     <a href = "list.html">
         <button>View All</button>
     </a>
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.pfold.js"></script>
+    <button id="button-pause" onclick="toggle()">Pause</button>
 
     </body>
 </html>
@@ -70,17 +72,48 @@
 <script>
 var papers = document.querySelectorAll(".paper");
 var n = papers.length ;
-var animations = {};
+var animations = [];
 
 var delay = 7000 ;
 
-for (var i = 0; i < n; i++) {
-    var circle = papers[i];
-    animations[i] = 0 ;
-    animatepapers(circle,i);
+var lock = false ;
+var play = true ;
+
+startAnimation() ;
+
+function startAnimation() {
+    for (var i = 0; i < n; i++) {
+        var circle = papers[i];
+        animations[i] = 0 ;
+        animatepapers(circle,i);
+    }
 }
 
-var lock = false ;
+function pause() {
+    animations.forEach((animation)=>{
+        animation.pause() ;
+    }) 
+    button = document.getElementById('button-pause') ;
+    button.innerHTML = 'Resume' ;
+    play = false ;
+}
+
+function resume() {
+    animations.forEach((animation)=>{
+        animation.play() ;
+    }) 
+    button = document.getElementById('button-pause') ;
+    button.innerHTML = 'Pause' ;
+    play = true ;
+    startAnimation() ;
+}
+
+function toggle() {
+    if(play)
+        pause() ;
+    else
+        resume() ;
+}
 
 
 function show(pid) {
@@ -89,8 +122,6 @@ function show(pid) {
         hide() ;
     }
     message = list[pid] ;
-    console.log(pid) ;
-    console.log(message) ;
 
     newPaper = document.createElement('div') ;
     newPaper.classList.add('uc-container') ;
@@ -134,21 +165,18 @@ function show(pid) {
     mainContainer.appendChild(newPaper) ;
     lock = true ;
 
-    //$(function() {
     var $container = $( '#uc-container' ),
         pfold = $( '#uc-container' ).pfold({
             easing : 'ease-in-out',
             folds : screen.width > screen.height ? 3 : 2 ,
             folddirection : screen.width > screen.height ? ['left','bottom','right'] : ['left','bottom'],
     });
-    console.log("Inside Function") ;
     $container.find( 'span.clickme' ).on('click',function() {
         pfold.unfold();
     }).end().find( 'span.close' ).on('click',function() {
         hide() ;
         pfold.fold();
     });
-    //});
 }
 
 function hide() {
@@ -158,6 +186,8 @@ function hide() {
 }
   
 function animatepapers(circle,i) {
+    if(!play)
+        return ;
     var xMax = screen.width;
     var yMax = screen.height;
   
@@ -195,6 +225,6 @@ function animatepapers(circle,i) {
     animations[i] = animationPlayer ;
     setTimeout(function(){
         animatepapers(circle,i)
-    },delay)
+    },delay) ;
  }
 </script>

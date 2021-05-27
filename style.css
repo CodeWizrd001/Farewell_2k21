@@ -76,3 +76,10 @@ height: 100%;
     box-sizing: border-box;
     z-index: 1;
 }
+
+.paused{
+    -webkit-animation-play-state:paused;
+    -moz-animation-play-state:paused;
+    -o-animation-play-state:paused; 
+    animation-play-state:paused;
+}
