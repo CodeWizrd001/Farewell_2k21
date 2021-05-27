@@ -72,6 +72,8 @@ var papers = document.querySelectorAll(".paper");
 var n = papers.length ;
 var animations = {};
 
+var delay = 7000 ;
+
 for (var i = 0; i < n; i++) {
     var circle = papers[i];
     animations[i] = 0 ;
@@ -82,12 +84,13 @@ var lock = false ;
 
 
 function show(pid) {
-    console.log("Button Clicked Show "+pid) ;
     if(lock)
     {
         hide() ;
     }
     message = list[pid] ;
+    console.log(pid) ;
+    console.log(message) ;
 
     newPaper = document.createElement('div') ;
     newPaper.classList.add('uc-container') ;
@@ -132,30 +135,29 @@ function show(pid) {
     lock = true ;
 
     //$(function() {
-        var $container = $( '#uc-container' ),
-            pfold = $( '#uc-container' ).pfold({
-                easing : 'ease-in-out',
-                folds : screen.width > screen.height ? 3 : 2 ,
-                folddirection : screen.width > screen.height ? ['left','bottom','right'] : ['left','bottom'],
-        });
-        console.log("Inside Function") ;
-        $container.find( 'span.clickme' ).on('click',function() {
-            pfold.unfold();
-        }).end().find( 'span.close' ).on('click',function() {
-            pfold.fold();
-        });
+    var $container = $( '#uc-container' ),
+        pfold = $( '#uc-container' ).pfold({
+            easing : 'ease-in-out',
+            folds : screen.width > screen.height ? 3 : 2 ,
+            folddirection : screen.width > screen.height ? ['left','bottom','right'] : ['left','bottom'],
+    });
+    console.log("Inside Function") ;
+    $container.find( 'span.clickme' ).on('click',function() {
+        pfold.unfold();
+    }).end().find( 'span.close' ).on('click',function() {
+        hide() ;
+        pfold.fold();
+    });
     //});
 }
 
 function hide() {
-    console.log("Button Clicked Hide ") ;
     paper = document.getElementById('uc-container') ;
     paper.remove() ;
     lock = false ;
 }
   
 function animatepapers(circle,i) {
-    setTimeout(function(){
     var xMax = screen.width;
     var yMax = screen.height;
   
@@ -165,7 +167,7 @@ function animatepapers(circle,i) {
     var degY = 1 ;
 
     circle.animProps = {
-        duration: 3000 + Math.random() * 9000,
+        duration: 6000 + Math.random() * 9000,
         easing: "ease-out",
     }
   
@@ -189,9 +191,10 @@ function animatepapers(circle,i) {
             }
         ], 
         circle.animProps
-        );
-        animations[i] = animationPlayer ;
+    );
+    animations[i] = animationPlayer ;
+    setTimeout(function(){
         animatepapers(circle,i)
-    },5000)
+    },delay)
  }
 </script>
